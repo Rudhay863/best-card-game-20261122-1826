@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Duel — a card duel of the four houses</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="stage">
+  <header id="topbar">
+    <div class="brand">Ember <b>Duel</b></div>
+    <div id="scoreboard" aria-label="Score">
+      <span>Wins <strong id="score-wins">0</strong></span>
+      <span>Damage dealt <strong id="score-damage">0</strong></span>
+      <span>Cards played <strong id="score-cards">0</strong></span>
+    </div>
+    <div id="round-label">Round 1</div>
+  </header>
+
+  <section class="life-row" aria-label="Rival life">
+    <div class="who">Rival Ember<small>The four-house challenger</small></div>
+    <div class="life-track"><div class="life-fill rival" id="rival-life-fill" style="width:100%"></div></div>
+    <div class="life-num"><span id="rival-life">20</span> / 20</div>
+    <span class="shield-tag" id="rival-shield" hidden>Shield 0</span>
+  </section>
+  <div class="hand" id="rival-hand" aria-label="Rival hand"></div>
+
+  <div id="mid">
+    <div id="played" aria-label="Cards played this round"></div>
+    <div id="side">
+      <div id="log" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <section class="life-row" aria-label="Your life">
+    <div class="who">You<small>Keeper of the ember</small></div>
+    <div class="life-track"><div class="life-fill" id="player-life-fill" style="width:100%"></div></div>
+    <div class="life-num"><span id="player-life">20</span> / 20</div>
+    <span class="shield-tag" id="player-shield" hidden>Shield 0</span>
+  </section>
+  <div class="hand" id="player-hand" aria-label="Your hand"></div>
+
+  <footer id="controls">
+    <div id="energy" aria-label="Energy"></div>
+    <div id="hint">Click a card or press 1–7 to play it. Space ends your turn.</div>
+    <button id="end-turn" type="button">End turn</button>
+  </footer>
+
+  <div class="overlay" id="title-screen">
+    <div class="panel">
+      <h1>Ember <span class="flame">Duel</span></h1>
+      <p>A card duel of the four houses. Outplay the rival, guard your ember, and take all 20 of their life.</p>
+      <ol class="rules">
+        <li>Each round you gain energy and draw a card. Cards cost energy to play.</li>
+        <li>Strike cards deal damage, Guard cards raise your shield, Mend cards heal you.</li>
+        <li>Play two cards of the same house in one turn: the second gains +2 power. That is the house bond.</li>
+        <li>First to bring the other to 0 life wins the duel.</li>
+      </ol>
+      <button id="start-button" type="button">Deal the cards</button>
+      <div class="keys-note">Mouse and keyboard: 1–7 play a card · Space ends turn · R restarts</div>
+    </div>
+  </div>
+
+  <div class="overlay" id="win-screen" hidden>
+    <div class="panel" id="win-panel">
+      <h1>You win the duel</h1>
+      <p>The rival ember fades. The table is yours.</p>
+      <div class="big-stat" id="win-stats"></div>
+      <button id="win-again" type="button">Duel again</button>
+      <div class="keys-note">Press R to duel again</div>
+    </div>
+  </div>
+
+  <div class="overlay" id="lose-screen" hidden>
+    <div class="panel" id="lose-panel">
+      <h1>Your ember goes out</h1>
+      <p>The rival takes this duel. Shuffle up and try a new hand.</p>
+      <div class="big-stat" id="lose-stats"></div>
+      <button id="lose-again" type="button">Duel again</button>
+      <div class="keys-note">Press R to duel again</div>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
